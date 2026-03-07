@@ -1,0 +1,13 @@
+title: Deep Disquiet
+description: Essays and notes on democracy, accountability, and the rule of law.
+baseurl: ""
+url: ""
+markdown: kramdown
+permalink: pretty
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
