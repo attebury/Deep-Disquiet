@@ -1,7 +1,0 @@
-/* Minimal styles for Deep Disquiet */
-body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 720px; margin: 0 auto; padding: 1rem; }
-header { border-bottom: 1px solid #eee; margin-bottom: 1.5rem; }
-nav a { margin-right: 1rem; }
-.post-content { margin-top: 1rem; }
-time { color: #666; font-size: 0.9em; }
-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
