@@ -1,15 +1,18 @@
 # Deploying Deep Disquiet
 
-This is a Jekyll site. Pushing to the repo does **not** automatically update the live site.
+This is a Jekyll site. You can **build locally and push** so the server only serves the built files (no Jekyll on the server).
 
-## Build locally
+## Deploy workflow: build locally, then push
 
 ```bash
 bundle install
 bundle exec jekyll build
+git add _site
+git commit -m "Build site"
+git push
 ```
 
-Output is in `_site/`. Serve that directory with any web server (e.g. nginx `root` pointing at `_site`), or upload `_site/` to your host.
+On the server: pull, then point nginx at the `_site/` directory. No Ruby or Jekyll needed on the server.
 
 ## If you see "Welcome to nginx!"
 
