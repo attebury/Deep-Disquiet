@@ -16,7 +16,8 @@ if ! git show-ref --verify refs/heads/deploy 2>/dev/null; then
   git checkout main
 else
   git checkout deploy
-  rsync -av _site/ . --exclude .git
+  # --delete so deploy branch only has _site contents (no leftover deploy.sh, Gemfile, etc.)
+  rsync -av --delete _site/ . --exclude .git
   git add -A
   git diff --staged --quiet && echo "No changes to deploy" || git commit -m "Deploy built site"
   git push origin deploy
