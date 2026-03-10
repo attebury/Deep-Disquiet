@@ -1,18 +1,33 @@
 # Deploying Deep Disquiet
 
-This is a Jekyll site. You can **build locally and push** so the server only serves the built files (no Jekyll on the server).
+This is a Jekyll site. **Recommended:** use the `deploy` branch so `main` stays source-only and the server pulls built files.
 
-## Deploy workflow: build locally, then push
+## Deploy branch (recommended)
+
+Build and push the built site to branch `deploy`. The server clones/pulls `deploy` and points nginx at the repo root.
 
 ```bash
-bundle install
+bundle install   # once
+./deploy.sh
+```
+
+On the server (first time): `git clone -b deploy <repo-url> deep-disquiet && cd deep-disquiet`  
+Then point nginx `root` at this directory. For updates: `git pull origin deploy`.
+
+`main` stays clean (no `_site/` committed). Only the `deploy` branch holds the built HTML/assets.
+
+## Alternative: commit _site on main
+
+If you prefer a single branch, unignore `_site/` in `.gitignore`, then:
+
+```bash
 bundle exec jekyll build
 git add _site
 git commit -m "Build site"
 git push
 ```
 
-On the server: pull, then point nginx at the `_site/` directory. No Ruby or Jekyll needed on the server.
+On the server: pull, point nginx at `_site/`.
 
 ## If you see "Welcome to nginx!"
 

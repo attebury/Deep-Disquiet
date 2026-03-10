@@ -1,4 +1,4 @@
-# _site/ unignored so we can build locally and push for deploy (server serves _site, no Jekyll on server)
+_site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
