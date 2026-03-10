@@ -16,6 +16,16 @@ Then point nginx `root` at this directory. For updates: `git pull origin deploy`
 
 `main` stays clean (no `_site/` committed). Only the `deploy` branch holds the built HTML/assets.
 
+### GitHub shows deploy "X ahead, Y behind main"
+
+Deploy is an orphan branch (no shared history with main). GitHub still shows ahead/behind; that’s normal. If deploy picked up source files (e.g. `deploy.sh`) from earlier runs, run `./deploy.sh` again from `main` so it pushes a clean built site; the next push updates deploy and should trigger your host.
+
+### DanubeData (or other Git-deploy hosts)
+
+1. **Which branch does the project use?** In DanubeData, set the project to deploy from branch **`deploy`** (not `main`). Then each push to `deploy` is a new deployment.
+2. **Trigger a deployment:** From your machine, run `./deploy.sh` (on `main`). It builds, updates the `deploy` branch, and pushes. DanubeData should see the push to `deploy` and deploy.
+3. If the project is set to `main`, then pushes to `deploy` won’t trigger. Either switch the project to branch `deploy`, or use a single-branch flow (commit `_site` on main and point the project at `main`).
+
 ## Alternative: commit _site on main
 
 If you prefer a single branch, unignore `_site/` in `.gitignore`, then:
